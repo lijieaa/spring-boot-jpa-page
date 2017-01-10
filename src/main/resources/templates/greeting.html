@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<p th:text="'Hello, ' + ${name} + '!'"/>
+<a th:if="${!firstPage}" th:href="@{/(pageNumber=${pageNumber-1})}">Previous</a>
+<span>
+    <a th:each="pageNumber:${#numbers.sequence(0, page)}" th:text="${pageNumber+1}"
+       th:href="@{'/greeting/?page='+${pageNumber}}"></a>
+</span>
+<a th:if="${!lastPage}" th:href="@{/(pageNumber=${pageNumber+1})}">Next</a>
+</body>
+</html>
